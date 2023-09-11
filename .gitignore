@@ -1,0 +1,8 @@
+src/__pycache__/basicparser.cpython-311.pyc
+src/__pycache__/basictoken.cpython-311.pyc
+src/__pycache__/flowsignal.cpython-311.pyc
+src/__pycache__/interpreter.cpython-311.pyc
+src/__pycache__/lexer.cpython-311.pyc
+src/__pycache__/msx.cpython-311.pyc
+src/__pycache__/program.cpython-311.pyc
+Tests/star.bas.bak

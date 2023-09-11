@@ -5,6 +5,7 @@
 50 Y = 13 
 60 PREVX = X : PREVY = Y 
 70 SCREEN 0 
+75 COLOR 7, 0
 80 CLS 
 90 LOCATE PREVX , PREVY : PRINT " " 
 100 LOCATE X , Y : PRINT "W" 
@@ -16,4 +17,4 @@
 160 IF A$ = CHR$ ( 0 ) + "K" THEN X = X - 1 : IF X <= 1 THEN X = 1 : REM This is the left arrow key! 
 170 IF A$ = CHR$ ( 0 ) + "M" THEN X = X + 1 : IF X > 80 THEN X = 80 : REM This is the right arrow key! 
 180 GOTO 90 
-190 PRINT "Finish!" 
+190 print " " : PRINT "Finish!" 
