@@ -1,3 +1,4 @@
+1 REM Windows 11 Python 3.11 verified 
 10 REM UTKA (DUCK) - old Basic game for LINTER 
 20 REM written by Yuri STarikov and 
 30 REM students of Moscow school #167 

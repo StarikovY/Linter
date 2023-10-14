@@ -13,7 +13,7 @@
 110 PREVX = X : PREVY = Y 
 120 A$ = INKEY$ : IF A$ = "" THEN GOTO 120 
 130 IF A$ = "q" THEN GOTO 190 
-140 IF A$ = CHR$ ( 0 ) + "H" THEN Y = Y - 1 : IF Y <= 1 THEN Y = 1 : REM  "This is the up arrow key!" 
+140 IF A$ = CHR$ ( 0 ) + "H" THEN Y = Y - 1 : IF Y <= 1 THEN Y = 1 : REM  This is the up arrow key! 
 150 IF A$ = CHR$ ( 0 ) + "P" THEN Y = Y + 1 : IF Y > 24 THEN Y = 24 : REM This is the down arrow key! 
 160 IF A$ = CHR$ ( 0 ) + "K" THEN X = X - 1 : IF X <= 1 THEN X = 1 : REM This is the left arrow key! 
 170 IF A$ = CHR$ ( 0 ) + "M" THEN X = X + 1 : IF X > 80 THEN X = 80 : REM This is the right arrow key! 
