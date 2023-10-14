@@ -2,6 +2,9 @@
 20 REM written by Yuri STarikov and 
 30 REM students of Moscow school #167 
 40 REM First release: 1987 
+45 PRINT "'I' - shut, 'X' - exit"
+46 rem PRINT "Press any key to kontinue..."
+47 INPUT "Press any key to kontinue...";A$
 50 SCREEN 0 
 60 CLS 
 120 RANDOMIZE 

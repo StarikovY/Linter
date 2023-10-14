@@ -42,4 +42,4 @@ def cls_terminal():
 
 def location (y, x) :
     curstr = '\x1b[' +str(y+1) + ';' + str(x+1) + 'H'
-    print(curstr, end='') 
+    print(curstr, end='', flush=True) 

@@ -1,4 +1,5 @@
-1  REM EOF Test
+1 REM Windows 11 Python 3.11 verified 
+5  REM EOF Test
 10 OPEN "D:\test\sign.log" FOR INPUT AS # 1
 20 IF EOF ( 1 ) THEN goto 300
 30 INPUT #1, A$

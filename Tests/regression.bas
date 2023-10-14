@@ -1,3 +1,4 @@
+1 REM Windows 11 Python 3.11 verified 
 10 REM A BASIC PROGRAM THAT CAN BE USED FOR REGRESSION TESTING
 20 REM OF ALL INTERPRETER FUNCTIONALITY
 30 PRINT "*** Testing basic arithmetic functions and multiple statements ***"

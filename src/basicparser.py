@@ -567,7 +567,7 @@ class BASICParser:
     def locate(self, x, y, text):
         # curstr = '\x1b[' +str(y+1) + ';' + str(x+1) + 'H' + text
         msx.location(y, x)         #swap argumentfo lib
-        print(text, end='')
+        print(text, end='', flush=True)
         # print(curstr, end='')
 
     def clearscreen(self):
@@ -614,7 +614,6 @@ class BASICParser:
             self.__screenmode = 0
             self.__screensize_X = 80
             self.__screensize_Y = 25
-
             cmd = 'mode con: cols=80 lines=25'
             os.system(cmd)
         elif Val == 1:

@@ -1,3 +1,4 @@
+1 REM Windows 11 Python 3.11 verified 
 10 REM TEST INKEY$
 15 A$ = INKEY$
 30 REM print "test" + A$

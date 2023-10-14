@@ -1,3 +1,4 @@
+1 REM Windows 11 Python 3.11 verified 
 10 REM Screen routines test
 20 rem set text screen mode
 60 SCREEN 0 
@@ -11,6 +12,7 @@
 220 NEXT J
 230 NEXT I
 233 rem pause
-235 rem LOCATE 1, 24
+235 LOCATE 1, 24
 240 COLOR 7, 0
+250 PRINT "Done!"
 

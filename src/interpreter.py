@@ -28,11 +28,20 @@ from lexer import Lexer
 from program import Program
 from sys import stderr
 import sys
+import os
+import msx
 
 def main():
 
     banner = (
-        """Linter - the interpreter of BASIC Programming language
+        """
+        *
+        *       *
+        *           ***   *     **    *  * 
+        *       *  *  *  ***   ****   **  *
+        *       *  *  *   *    *      *
+        ******  *  *  *   * *  ****   *
+        The interpreter of BASIC Programming language
                      Yuri Starikov - 1986-2023. 
             This version based on sources of PYBasic 
         """)
@@ -46,6 +55,13 @@ def main():
     else:
         BasProg = ''
         
+    # cmd = 'mode con: cols=80 lines=25'
+    # os.system(cmd) 
+    
+    # print('\x1b[' + str(40) + 'm', end='')
+    # print('\x1b[' + str(32) + 'm', end='')
+    # msx.cls_terminal()   
+
     print(banner)
 
     lexer = Lexer()

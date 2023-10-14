@@ -1,3 +1,4 @@
+1 REM Windows 11 Python 3.11 verified 
 10 REM INKEY$ test - starship control 
 20 REM prog shows how to check pressing regular keys 
 30 REM and how to recognize and handle special keys 

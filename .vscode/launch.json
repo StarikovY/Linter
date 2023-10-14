@@ -13,12 +13,12 @@
             "justMyCode": true
         },
         {
-            "name": "Python: PYLinter",
+            "name": "Python: Linter",
             "type": "python",
             "request": "launch",
-            "program": "d:\\PyLinter\\interpreter.py",
+            "program": "d:\\Linter\\Linter\\src\\Linter.py",
             "args":[
-                "d:\\PyLinter\\BAS1.BAS"
+                "d:\\Linter\\Linter\\Tests\\utka.BAS"
             ],
             "console": "externalTerminal",
             "justMyCode": true

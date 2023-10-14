@@ -1,3 +1,4 @@
+1 REM Windows 11 Python 3.11 verified 
 5 PRINT TAB ( 16 ) ; "**************************" 
 10 PRINT TAB ( 26 ) ; "ELIZA" 
 20 PRINT TAB ( 20 ) ; "CREATIVE COMPUTING" 
