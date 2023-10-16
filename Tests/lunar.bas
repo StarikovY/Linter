@@ -51,3 +51,4 @@
 420 Q = S * K / M : J = V + G * S + Z * ( - Q - Q * Q / 2 - Q ^ 3 / 3 - Q ^ 4 / 4 - Q ^ 5 / 5 ) 
 430 I = A - G * S * S / 2 - V * S + Z * S * ( Q / 2 + Q ^ 2 / 6 + Q ^ 3 / 12 + Q ^ 4 / 20 + Q ^ 5 / 30 ) : RETURN : 
 440 PRINT : PRINT : PRINT "TRY AGAIN??" : GOTO 70 
+460 REM 
