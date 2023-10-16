@@ -29,3 +29,6 @@ src/build/linter/localpycs/struct.pyc
 src/build/linter/Analysis-00.toc
 src/build/linter/base_library.zip
 src/linter.spec
+.vscode/launch.json
+.vscode/launch.json
+.gitignore

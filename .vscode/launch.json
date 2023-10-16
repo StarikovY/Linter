@@ -18,7 +18,7 @@
             "request": "launch",
             "program": "d:\\Linter\\Linter\\src\\Linter.py",
             "args":[
-                "d:\\Linter\\Linter\\Tests\\utka.BAS"
+                "d:\\Linter\\lunar.BAS"
             ],
             "console": "externalTerminal",
             "justMyCode": true

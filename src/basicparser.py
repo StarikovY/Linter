@@ -1184,7 +1184,7 @@ class BASICParser:
                          # minuses
         self.__factor()  # Leaves value of term on top of stack
 
-        while self.__token.category in [Token.TIMES, Token.DIVIDE, Token.MODULO]:
+        while self.__token.category in [Token.TIMES, Token.DIVIDE, Token.POWER, Token.MODULO]:
             savedcategory = self.__token.category
             self.__advance()
             self.__sign = 1  # Initialise sign
@@ -1197,6 +1197,9 @@ class BASICParser:
 
             elif savedcategory == Token.DIVIDE:
                 self.__operand_stack.append(leftoperand / rightoperand)
+            
+            elif savedcategory == Token.POWER:
+                self.__operand_stack.append(leftoperand ** rightoperand)
 
             else:
                 self.__operand_stack.append(leftoperand % rightoperand)

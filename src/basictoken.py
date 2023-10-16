@@ -130,6 +130,8 @@ class BASICToken:
         TRON            = 96    # TRON keyword 
         TROFF           = 97    # TROFF keyword
         PAUSE           = 98    # PAUSE keyword (Statement)
+        POWER           = 99    # POWER operation
+
 
         # Displayable names for each token category
         catnames = ['EOF', 'LET', 'LIST', 'PRINT', 'RUN',
@@ -152,7 +154,7 @@ class BASICToken:
         'INKEY$', 'RENUM', 'BEEP', 'TRON', 'TROFF', 'PAUSE']
 
         smalltokens = {'=': ASSIGNOP, '(': LEFTPAREN, ')': RIGHTPAREN,
-                       '+': PLUS, '-': MINUS, '*': TIMES, '/': DIVIDE,
+                       '+': PLUS, '-': MINUS, '*': TIMES, '/': DIVIDE, '^': POWER,
                        '\n': NEWLINE, '<': LESSER,
                        '>': GREATER, '<>': NOTEQUAL,
                        '<=': LESSEQUAL, '>=': GREATEQUAL, ',': COMMA,
