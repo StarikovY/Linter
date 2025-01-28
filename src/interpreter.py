@@ -42,7 +42,7 @@ def main():
         *       *  *  *   *    *      *
         ******  *  *  *   * *  ****   *
         The interpreter of BASIC Programming language
-                     Yuri Starikov - 1986-2023. 
+                     Yuri Starikov - 1986-2025. 
             This version based on sources of PYBasic 
         """)
 
@@ -117,7 +117,7 @@ def main():
                         print("Program terminated")
 
                 # List the program
-                elif tokenlist[0].category == Token.LIST:
+                elif tokenlist[0].category == Token.LIST or tokenlist[0].category == Token.LISTNH:
                      if len(tokenlist) == 2:
                          program.list(int(tokenlist[1].lexeme),int(tokenlist[1].lexeme))
                      elif len(tokenlist) == 3:
@@ -155,6 +155,12 @@ def main():
                 elif tokenlist[0].category == Token.TROFF:
                     program.troff()
                     
+                elif tokenlist[0].category == Token.DEC:
+                    program.dec()
+  
+                elif tokenlist[0].category == Token.MSX:
+                    program.msx()                    
+      
                 # Save the program to disk
                 elif tokenlist[0].category == Token.SAVE:
                     program.save(tokenlist[1].lexeme)
@@ -165,6 +171,14 @@ def main():
                     program.load(tokenlist[1].lexeme)
                     print("Program read from file")
 
+                # List of files on the disk
+                elif tokenlist[0].category == Token.DIR:
+                    if len(tokenlist) == 1:
+                        path = "."
+                    else:
+                        path = tokenlist[1].lexeme
+                    program.filelist(path)
+
                 # Delete the program from memory
                 elif tokenlist[0].category == Token.NEW:
                     program.delete()
@@ -173,7 +187,7 @@ def main():
 
                 # Unrecognised input
                 else:
-                    print("Unrecognised input", file=stderr)
+                    print("Unrecognised input: ", file=stderr)
                     for token in tokenlist:
                         token.print_lexeme()
                     print(flush=True)

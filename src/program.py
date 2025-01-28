@@ -25,7 +25,7 @@ from basictoken import BASICToken as Token
 from basicparser import BASICParser
 from flowsignal import FlowSignal
 from lexer import Lexer
-
+import os
 
 class BASICData:
 
@@ -155,7 +155,7 @@ class Program:
         # Setup DATA object
         self.__data = BASICData()
         
-        self.__tron = False
+        self.__tron = False                       
 
     def __str__(self):
 
@@ -203,6 +203,16 @@ class Program:
     def troff(self):
         self.__tron = False
         print("OK")
+
+    def msx (self):
+        self.__msx = True
+        self.__dec = False
+        print("OK")                           
+
+    def dec (self):
+        self.__dec = True
+        self.__msx = False
+        print("OK")                           
         
     def renum(self, new_line=None, current_line=None, increment=None):
         # re-enum program
@@ -295,6 +305,14 @@ class Program:
         except OSError:
             raise OSError("Could not save to file")
 
+
+    def filelist(self, path):
+        # list of files
+        listfiles = os.listdir(path)
+        # print("listdir is OK")
+        
+        print(listfiles)      
+        
     def load(self, file):
         """Load the program
 

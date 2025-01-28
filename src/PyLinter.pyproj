@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3f58e18c-75eb-4285-9ce6-5faa175cf722</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PyLinter.py</StartupFile>
+    <StartupFile>Linter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -15,7 +15,9 @@
     <InterpreterArguments>
     </InterpreterArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <CommandLineArguments>d:\pylinter\pylinter\bas1.bas</CommandLineArguments>
+    <CommandLineArguments>
+    </CommandLineArguments>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,8 +33,9 @@
     <Compile Include="flowsignal.py" />
     <Compile Include="interpreter.py" />
     <Compile Include="lexer.py" />
+    <Compile Include="Linter.py" />
+    <Compile Include="msx.py" />
     <Compile Include="program.py" />
-    <Compile Include="PyLinter.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BAS1.bas" />

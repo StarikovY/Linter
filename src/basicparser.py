@@ -195,7 +195,8 @@ class BASICParser:
                     # in this syntax the then or else code block is not a legal basic statement
                     # so recursive processing can't be used
                     return flow
-            elif token.category == token.COLON:
+            elif token.category == token.COLON or token.category == token.BACKSLASH:
+   #             if()                
                 # Found a COLON, process tokens found to this point
                 linetokenindex += self.__tokenindex
                 self.__tokenindex = 0
@@ -430,7 +431,7 @@ class BASICParser:
                 else:
                     print(self.__operand_stack.pop(), end='')
 
-            while self.__token.category == Token.SEMICOLON:
+            while self.__token.category == Token.SEMICOLON or self.__token.category == Token.BACKSLASH:
                 if self.__tokenindex == len(self.__tokenlist) - 1:
                     # If a semicolon ends this line, don't print
                     # a newline.. a-la ms-basic
@@ -1035,6 +1036,7 @@ class BASICParser:
             # Acquire the input prompt
             self.__logexpr()
             prompt = self.__operand_stack.pop()
+            
             self.__consume(Token.SEMICOLON)
 
         # Acquire the comma separated input variables

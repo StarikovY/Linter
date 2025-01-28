@@ -26,6 +26,10 @@ lexeme      Token in string form
 """
 
 
+from codecs import backslashreplace_errors
+from tkinter.tix import DECREASING, ListNoteBook
+
+
 class BASICToken:
 
         """BASICToken categories"""
@@ -131,10 +135,15 @@ class BASICToken:
         TROFF           = 97    # TROFF keyword
         PAUSE           = 98    # PAUSE keyword (Statement)
         POWER           = 99    # POWER operation
+        DEC             = 100   # Dec RT-11 Basic mode
+        MSX             = 101   # MSX basic mode
+        BACKSLASH       = 102   # for DEC only
+        LISTNH          = 103   # For Dec compatibility, alias for LIST     
+        DIR             = 104   #list of files
 
 
         # Displayable names for each token category
-        catnames = ['EOF', 'LET', 'LIST', 'PRINT', 'RUN',
+        catnames = ['EOF', 'LET', 'LIST', 'LISTNH', 'PRINT', 'RUN',
         'FOR', 'NEXT', 'IF', 'THEN', 'ELSE', 'ASSIGNOP',
         'LEFTPAREN', 'RIGHTPAREN', 'PLUS', 'MINUS', 'TIMES',
         'DIVIDE', 'NEWLINE', 'UNSIGNEDINT', 'NAME', 'EXIT',
@@ -151,19 +160,20 @@ class BASICToken:
         'RNDINT', 'OPEN', 'HASH', 'CLOSE', 'FSEEK', 'APPEND',
         'OUTPUT', 'RESTORE', 'RNDINT', 'TAB', 'SEMICOLON',
         'LEFT', 'RIGHT', 'SCREEN', 'CLS', 'LOCATE', 'COLOR', 
-        'INKEY$', 'RENUM', 'BEEP', 'TRON', 'TROFF', 'PAUSE']
+        'INKEY$', 'RENUM', 'BEEP', 'TRON', 'TROFF', 'PAUSE', 'DEC', 'MSX', 
+        'BACKSLASH', 'DIR']
 
         smalltokens = {'=': ASSIGNOP, '(': LEFTPAREN, ')': RIGHTPAREN,
                        '+': PLUS, '-': MINUS, '*': TIMES, '/': DIVIDE, '^': POWER,
                        '\n': NEWLINE, '<': LESSER,
                        '>': GREATER, '<>': NOTEQUAL,
                        '<=': LESSEQUAL, '>=': GREATEQUAL, ',': COMMA,
-                       ':': COLON, '%': MODULO, '!=': NOTEQUAL, '#': HASH,
+                       ':': COLON, '%': MODULO, '!=': NOTEQUAL, '#': HASH, '\\' : BACKSLASH,
                        ';': SEMICOLON}
 
 
         # Dictionary of BASIC reserved words
-        keywords = {'LET': LET, 'LIST': LIST, 'PRINT': PRINT,
+        keywords = {'LET': LET, 'LIST': LIST, 'LISTNH':LISTNH, 'PRINT': PRINT, 'DIR':DIR,
                     'FOR': FOR, 'RUN': RUN, 'NEXT': NEXT,
                     'IF': IF, 'THEN': THEN, 'ELSE': ELSE,
                     'EXIT': EXIT, 'DIM': DIM, 'STEP': STEP,

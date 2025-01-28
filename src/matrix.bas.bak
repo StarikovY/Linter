@@ -1,0 +1,68 @@
+10 REM Program Kapel 
+20 CLS : N = 10 : REM Number of drops 
+30 INPUT "Enter line of text (up to 10 chars)" ; LINETXT$ 
+35 if LEN ( LINETXT$ ) > 10 Then Goto 30
+40 REM Waiting for key 
+50 LNGT = LEN ( LINETXT$ ) : STARTLOC = INT ( ( 80 - LNGT ) / 2 ) 
+60 PRINT LNGT 
+70 PRINT STARTLOC 
+80 REM REM Main Loop 
+90 DIM LETTER$ ( 10 ) 
+100 DIM COLUMN ( 10 ) 
+110 DIM LINES ( 10 ) 
+120 REM ------------------------------------------------------------ 
+121 For I = 1 TO LNGT
+122 LETTER$(I) = LINETXT$(I)
+123 NEXT I
+130 REM Loop 
+140 CLS : RANDOMIZE 
+150 SCREEN 0 : COLOR 2 , 0 
+160 LOCATE STARTLOC , 0 : PRINT LINETXT$ 
+170 FOR I = 1 TO 23 
+180 FOR K = 1 TO LNGT
+190 REM Generate letter and column 
+200 REM Generate rundom number and convert to letter 
+210 IF K > 10 THEN GOTO 460 
+220 IF K >= I THEN GOSUB 580 
+230 REM if K > 80 then goto 460 
+240 LOCATE COLUMN ( K ) , I : PRINT LETTER$ ( K ) 
+250 SPEED = 5000 - ( 10 - N ) * 300 
+260 FOR J = 1 TO SPEED : REM 
+320 REM speed for drop of letter 
+330 REM Q$ = UPPER$ ( INKEY$ ) 
+340 REM Clear scren when input letter i the same as drop[ letter 
+350 REM Decrease number of missed letters, next char 
+360 REM IF Q$ = C$ THEN CLS : N = N - 1 : GOTO 430 
+370 REM Loop for checking input char 
+380 NEXT J 
+390 REM Erase letter on line . 
+400 LOCATE COLUMN ( K ) , I : REM PRINT " " 
+410 REM Loop for moving letter to next line 
+420 REM 
+430 REM SLED: 
+440 REM Loop for next letter. 
+450 NEXT K 
+460 NEXT I 
+470 REM Show how many drops missed 
+480 LOCATE 10 , 5 
+490 PRINT "" 
+500 PRINT "Missed letters: " ; N 
+510 PRINT "Again? " 
+520 REM Waiting 
+530 Y$ = INKEY$ 
+540 IF Y$ = "" THEN 450 
+550 IF UPPER$ ( Y$ ) = "Y" THEN 20 
+560 REM GOTO 20 
+570 END 
+580 A = INT ( 160 * RND ( 1 ) ) 
+590 REM If letters are not capital latin letter try again 
+600 IF A < 65 OR A > 90 THEN GOTO 190 
+630 C$ = UPPER$ ( CHR$ ( A ) ) 
+640 LETTER$ ( K ) = C$ 
+650 REM Select column for drops 
+660 V = INT ( RND ( 1 ) * 75 ) 
+670 COLUMN ( K ) = V 
+680 REM PRINT "C$ " ; C$ ; " A " ; A ; " V " ; V 
+690 REM lOOP OF LETTER DROP 
+700 REM Set to upper line for I=1 and down and down 
+710 RETURN 
