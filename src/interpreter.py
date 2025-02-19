@@ -178,6 +178,22 @@ def main():
                     else:
                         path = tokenlist[1].lexeme
                     program.filelist(path)
+                
+                # SET Breakpoint
+                elif tokenlist[0].category == Token.BPON:
+                    program.bpon(tokenlist[1].lexeme)
+
+                # Delete Breakpoint
+                elif tokenlist[0].category == Token.BPOFF:
+                    program.bpoff(tokenlist[1].lexeme)
+
+                # List of Breakpoints
+                elif tokenlist[0].category == Token.BPLIST:
+                    program.bplist()
+
+                # remove all Breakpoints
+                elif tokenlist[0].category == Token.BPCLEAR:
+                    program.bpclear()
 
                 # Delete the program from memory
                 elif tokenlist[0].category == Token.NEW:

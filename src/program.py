@@ -26,6 +26,7 @@ from basicparser import BASICParser
 from flowsignal import FlowSignal
 from lexer import Lexer
 import os
+# from debug import Debug
 
 class BASICData:
 
@@ -143,6 +144,9 @@ class Program:
         # statements, keyed by line number
         self.__program = {}
 
+        # represent debug 
+        # self.__debug = Debug()
+
         # Program counter
         self.__next_stmt = 0
 
@@ -155,7 +159,8 @@ class Program:
         # Setup DATA object
         self.__data = BASICData()
         
-        self.__tron = False                       
+        self.__tron = False 
+        self.bplines = []
 
     def __str__(self):
 
@@ -300,11 +305,24 @@ class Program:
         if not file.lower().endswith(".bas"):
             file += ".bas"
         try:
-            with open(file, "w") as outfile:
+            with open(file, "w", encoding='utf-8') as outfile:
                 outfile.write(str(self))
         except OSError:
             raise OSError("Could not save to file")
 
+    def bpon(self, line):
+        self.bplines.append(int(line))
+
+    def bpoff(self, line):
+        self.bplines.remove(int(line))
+
+    def bplist(self):
+        for item in self.bplines:
+            print(item, ' ', end='')
+        print(" ")      
+
+    def bpclear(self):
+        self.bplines.clear()
 
     def filelist(self, path):
         # list of files
@@ -327,7 +345,7 @@ class Program:
             file += ".bas"
         try:
             lexer = Lexer()
-            with open(file, "r") as infile:
+            with open(file, "r", encoding='utf-8') as infile:
                 for line in infile:
                     line = line.replace("\r", "").replace("\n", "").strip()
                     tokenlist = lexer.tokenize(line)
@@ -396,12 +414,58 @@ class Program:
         except RuntimeError as err:
             raise RuntimeError(str(err))
 
+    def execdbg(self, stmt2, tokenlist2):
+#
+# Available debug instructions:
+#
+# PRINT Args - Print variable
+# BPON LINE_NUMBER - set breakpoint
+# BPOFF LINE_ NUMBER - disable breakpoint
+# BPLIST - list of break points
+# GOTO LINE_NUMBER - set next line 
+# 
+#         
+        # self.__stmt = stmt2
+        # self.__tokenlist  =  tokenlist2
+        # self.__Program = prog ()
+
+        if len(tokenlist2) == 0:
+            return
+        
+        # if len(tokenlist2) != 2:
+        #    print('Wrong debug derective!', end='')
+        #    return
+        
+        # find last line number of program
+        line_numbers = self.line_numbers()
+        prglen = len(line_numbers)
+        lastline = line_numbers[prglen-1] + 1
+    
+        if tokenlist2[0].category == 105:  # BPON
+            self.bplines.append(int(tokenlist2[1].lexeme))
+        elif tokenlist2[0].category == 106:  # BPOFF
+            self.bplines.remove(int(tokenlist2[1].lexeme))
+        elif tokenlist2[0].category == 107:  # BPLIST
+            for item in self.bplines:
+                print(item, ' ', end='')
+            print(" ")    
+        elif tokenlist2[0].category == 108:  # BPCLEAR
+            self.bplines.clear()  
+        elif tokenlist2[0].category == 96:  # TRON
+            self.__tron = True
+        elif tokenlist2[0].category == 97:  # TROFF
+            self.__tron = False
+        else:
+            self.__parser.parse(tokenlist2, lastline)
+
+        return
+
     def execute(self):
         """Execute the program"""
 
         self.__parser = BASICParser(self.__data)
         self.__data.restore(0) # reset data pointer
-
+        lexer = Lexer()
         line_numbers = self.line_numbers()
 
         if len(line_numbers) > 0:
@@ -416,9 +480,26 @@ class Program:
             # Run through the program until the
             # has line number has been reached
             while True:
-                if self.__tron:
+                ln = self.get_next_line_number()
+                if self.__tron or ln in self.bplines:
+                    self.__tron = True
+                    lngt = 1
                     sttm = self.str_statement(line_numbers[index])
                     print(sttm, end='')
+
+                    while lngt > 0:
+                        if self.__tron == False:
+                            break
+
+                        stmt2 = input('$ ')
+
+                        # try:
+                        tokenlist2 = lexer.tokenize(stmt2)
+                        lngt = len(tokenlist2)
+                        if lngt > 0:
+                            # self.__debug.execdbg(prog, stmt2, tokenlist2)
+                            self.execdbg(stmt2, tokenlist2)
+                            # self.__parser.parse(tokenlist2, 999)
                     
                 flowsignal = self.__execute(self.get_next_line_number())
                 self.__parser.last_flowsignal = flowsignal
@@ -553,6 +634,7 @@ class Program:
     def delete(self):
         """Deletes the program by emptying the dictionary"""
         self.__program.clear()
+        # self.__debug.clear()
         self.__data.delete()
 
     def delete_statement(self, line_number):

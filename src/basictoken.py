@@ -139,7 +139,11 @@ class BASICToken:
         MSX             = 101   # MSX basic mode
         BACKSLASH       = 102   # for DEC only
         LISTNH          = 103   # For Dec compatibility, alias for LIST     
-        DIR             = 104   #list of files
+        DIR             = 104   # list of files
+        BPON            = 105   # Breakpoint ON command
+        BPOFF           = 106   # Breakpoint OFF command
+        BPLIST          = 107   # List of Breakpoints
+        BPCLEAR         = 108   # Remove all breakpoints
 
 
         # Displayable names for each token category
@@ -161,7 +165,7 @@ class BASICToken:
         'OUTPUT', 'RESTORE', 'RNDINT', 'TAB', 'SEMICOLON',
         'LEFT', 'RIGHT', 'SCREEN', 'CLS', 'LOCATE', 'COLOR', 
         'INKEY$', 'RENUM', 'BEEP', 'TRON', 'TROFF', 'PAUSE', 'DEC', 'MSX', 
-        'BACKSLASH', 'DIR']
+        'BACKSLASH', 'DIR', 'BPON', 'BPOFF', 'BPLIST', 'BPCLEAR']
 
         smalltokens = {'=': ASSIGNOP, '(': LEFTPAREN, ')': RIGHTPAREN,
                        '+': PLUS, '-': MINUS, '*': TIMES, '/': DIVIDE, '^': POWER,
@@ -202,7 +206,7 @@ class BASICToken:
                     'CLS' : CLS, 'LOCATE' : LOCATE, 'COLOR' : COLOR,
                     'INKEY$' : INKEY, 'RENUM' : RENUM, 'BEEP': BEEP,
                     'TRON': TRON, 'TROFF': TROFF, 'PAUSE' : PAUSE, 'SYSTEM' : STOP,
-                    'EOF' : EOF  
+                    'EOF' : EOF, 'BPON' : BPON, 'BPOFF' : BPOFF, 'BPLIST' : BPLIST, 'BPCLEAR' : BPCLEAR
                     }
 
 
