@@ -30,22 +30,26 @@ from sys import stderr
 import sys
 import os
 import msx
+import datetime
 
 def main():
 
     banner = (
         """
         *
-        *       *
+        *       °
         *           ***   *     **    *  * 
         *       *  *  *  ***   ****   **  *
         *       *  *  *   *    *      *
         ******  *  *  *   * *  ****   *
         The interpreter of BASIC Programming language
                      Yuri Starikov - 1986-2025. 
-            This version based on sources of PYBasic 
+            This version based on sources of PYBasic
+                    Version 1.5.0.72
         """)
-
+    # tz = datetime.timezone.utc
+    # ft = "%Y-%m-%dT%H:%M:%S%z"
+    # t = datetime.datetime.now(tz=tz).strftime(ft)
     argc = len(sys.argv)
     if argc > 2:
         print("Usage: python3 " + sys.argv[0] + " [basic_program]")
@@ -62,7 +66,9 @@ def main():
     # print('\x1b[' + str(32) + 'm', end='')
     # msx.cls_terminal()   
 
+    
     print(banner)
+    # print(f"           Version: 1.5.{t}")
 
     lexer = Lexer()
     program = Program()
